@@ -1,8 +1,8 @@
 rules r = new rules();
 Board test = new Board(192, 108);
 
-Agent[] a = new Agent[1];
-ArrayList<Plants> p = new ArrayList<Plants>();
+Agent[] a = new Agent[1]; //a = agents
+ArrayList<Plants> p = new ArrayList<Plants>(); //p = plants
 boolean debug = true;
 
 void setup() {
@@ -11,7 +11,7 @@ void setup() {
   //test.initBoard(1, color(0, 0, 255));
 
   for (int i = 0; i<a.length; i++ ) {
-    a[i] = new Agent(100, 100);
+    a[i] = new Agent(100+i*10, 100+i*10);
   }
   for (int i = 0; i<test.col; i++ ) {
     for (int j = 0; j<test.row; j++ ) {
