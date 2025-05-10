@@ -13,7 +13,7 @@ class Plants {
   void update() {
     fill(0, 255, 0);
     if (!isDead)
-      ellipse(pos.x, pos.y, 10, 10);
+      ellipse(pos.x, pos.y, 0, 0);
     fill(255);
     
   
