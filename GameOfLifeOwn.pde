@@ -6,8 +6,8 @@ ArrayList<Plants> p = new ArrayList<Plants>(); //p = plants
 boolean debug = true;
 
 void setup() {
-  size(1920, 1080);
-  //frameRate(10);
+  size(1920, 1144);
+  //frameRate(30);
   //test.initBoard(1, color(0, 0, 255));
 
   for (int i = 0; i<a.length; i++ ) {

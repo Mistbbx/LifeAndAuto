@@ -66,7 +66,7 @@ class Movement {
   void display() {
     // Draw a triangle rotated in the direction of velocity
     float theta = velocity.heading() + radians(90);
-    fill(127);
+    fill(random(255),random(255),random(255));
     stroke(0);
     pushMatrix();
     translate(position.x,position.y);

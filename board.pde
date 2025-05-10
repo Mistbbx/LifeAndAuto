@@ -8,7 +8,7 @@ class  Board {
       for (int j = 0; j<row; j++)
       {
         board[i][j] = new Cell();
-        board[i][j].setValue((int)random(2));
+        board[i][j].setValue((int)random(4));
       }
     }
   }
