@@ -1,5 +1,5 @@
 class Cell {
-  int value = 10;
+  int value = 0;
   color c = color(0);
   
   Cell(){

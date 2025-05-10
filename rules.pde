@@ -34,7 +34,7 @@ class rules {
     Cell[][] temp = b.Create2DArray();  
     for (int i= 1; i<b.col-1; i++) {
       for (int j = 1; j <b.row-1; j++) {
-        if (b.countColor(i, j, color(0,255,0)) == 2){
+        if (b.countColor(i, j, color(0,255,0)) == 3){
           temp[i][j].setColor(color(0,255,0));
           temp[i][j].setValue(1);}
         else if (b.countColor(i, j, color(255,0,0)) == 3){
