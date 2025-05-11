@@ -4,6 +4,7 @@ class Agent {
   char hungerFor = 'p';
   boolean isDead = false;
   PVector pos;
+  int number;
 
   Agent(float x, float y) {
     m = new Wander(x, y);
@@ -38,22 +39,23 @@ class Agent {
           }
         }
       }
-    } else if (hungerFor == 'a') {
+    } else if (hungerFor == 'a' && a.size() > 0) {
       for (int i =0; i<a.size(); i++) {
-        if (m.position.dist(a.get(i).pos) < oldD && a.get(i).isDead == false) {
+
+        if (m.position.dist(a.get(i).pos)< 20) {
+          a.get(i).kill();
+        } else if (m.position.dist(a.get(i).pos) < oldD && a.get(i).isDead == false) {
           oldD = m.position.dist(a.get(i).pos);
           index = i;
-
-          if (m.position.dist(a.get(i).pos)< 20) {
-            a.get(i).kill();
-          }
         }
       }
+    } else {
+      isHungry = false;
     }
     PVector t = new PVector(0, 0);
     if (hungerFor == 'p') {
       t = p.get(index).pos.copy();
-    } else if (hungerFor == 'a') {
+    } else if (hungerFor == 'a' && a.size() > 0) {
       t = a.get(index).pos.copy();
     }
     return t;
@@ -61,6 +63,6 @@ class Agent {
 
 
   void kill() {
-    isDead = true;
+    a.remove(number);
   }
 }

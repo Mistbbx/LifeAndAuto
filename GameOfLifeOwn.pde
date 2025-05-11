@@ -14,6 +14,7 @@ void setup() {
 
   for (int i = 0; i<agentA; i++ ) {
     a.add(new Agent(10, 10));
+    a.get(i).number = i;
   }
   for (int i = 0; i<a1.length; i++ ) {
     a1[i] = new Agent(-1000+i*-20, 1000+i*-20);
@@ -41,6 +42,7 @@ void draw() {
   test.display();
 
   for (int i = 0; i<a.size(); i++) {
+    a.get(i).number = i;
     a.get(i).update();
   }
   for (int i = 0; i<a1.length; i++) {
