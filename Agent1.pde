@@ -5,6 +5,7 @@ class Agent {
   boolean isDead = false;
   PVector pos;
   int number;
+  int mitosis = 0;
 
   Agent(float x, float y) {
     m = new Wander(x, y);
@@ -23,6 +24,10 @@ class Agent {
         m.borders();
         m.display();
       }
+      if (mitosis >= 50) {
+        a.add(new Agent(pos.x, pos.y));
+        mitosis = 0;
+      }
     }
   }
   PVector findTarget() {
@@ -31,19 +36,21 @@ class Agent {
 
     if (hungerFor == 'p') {
       for (int i =0; i<p.size(); i++) {
-        if (m.position.dist(p.get(i).pos) < oldD && p.get(i).isDead == false) {
+        if (m.position.dist(p.get(i).pos)< 20) {
+          p.get(i).kill();
+          mitosis++;
+        } else if (m.position.dist(p.get(i).pos) < oldD && p.get(i).isDead == false) {
           oldD = m.position.dist(p.get(i).pos);
           index = i;
-          if (m.position.dist(p.get(i).pos)< 20) {
-            p.get(i).kill();
-          }
         }
       }
     } else if (hungerFor == 'a' && a.size() > 0) {
       for (int i =0; i<a.size(); i++) {
-
         if (m.position.dist(a.get(i).pos)< 20) {
           a.get(i).kill();
+          for (int j = 0; j<a.size(); j++) {
+            a.get(j).number = j;
+          }
         } else if (m.position.dist(a.get(i).pos) < oldD && a.get(i).isDead == false) {
           oldD = m.position.dist(a.get(i).pos);
           index = i;
@@ -63,6 +70,7 @@ class Agent {
 
 
   void kill() {
+    print(a.size()+" ");
     a.remove(number);
   }
 }

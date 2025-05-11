@@ -5,7 +5,6 @@
 // The "Vehicle" class (for wandering)
 
 class Movement {
-
   PVector position;
   PVector velocity;
   PVector acceleration;

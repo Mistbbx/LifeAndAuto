@@ -3,7 +3,7 @@ Board test = new Board(192, 108);
 
 int agentA = 10;
 ArrayList<Agent> a = new ArrayList<Agent>(); //a = agents
-Agent[] a1 = new Agent[10]; //a = agents
+Agent[] a1 = new Agent[3]; //a = agents
 ArrayList<Plants> p = new ArrayList<Plants>(); //p = plants
 boolean debug = true;
 
@@ -13,11 +13,11 @@ void setup() {
   //test.initBoard(1, color(0, 0, 255));
 
   for (int i = 0; i<agentA; i++ ) {
-    a.add(new Agent(10, 10));
+    a.add(new Agent(10, 10+i*100));
     a.get(i).number = i;
   }
   for (int i = 0; i<a1.length; i++ ) {
-    a1[i] = new Agent(-1000+i*-20, 1000+i*-20);
+    a1[i] = new Agent(-1900, 1000+i*-500);
     a1[i].hungerFor = 'a';
   }
   for (int i = 0; i<test.col; i++ ) {
@@ -42,7 +42,6 @@ void draw() {
   test.display();
 
   for (int i = 0; i<a.size(); i++) {
-    a.get(i).number = i;
     a.get(i).update();
   }
   for (int i = 0; i<a1.length; i++) {
