@@ -39,22 +39,22 @@ class Agent {
         }
       }
     } else if (hungerFor == 'a') {
-      for (int i =0; i<a.length; i++) {
-        if (m.position.dist(a[i].pos) < oldD && a[i].isDead == false) {
-          oldD = m.position.dist(a[i].pos);
+      for (int i =0; i<a.size(); i++) {
+        if (m.position.dist(a.get(i).pos) < oldD && a.get(i).isDead == false) {
+          oldD = m.position.dist(a.get(i).pos);
           index = i;
-        
-          if (m.position.dist(a[i].pos)< 20) {
-            a[i].kill();
+
+          if (m.position.dist(a.get(i).pos)< 20) {
+            a.get(i).kill();
           }
-        } 
+        }
       }
     }
     PVector t = new PVector(0, 0);
     if (hungerFor == 'p') {
       t = p.get(index).pos.copy();
     } else if (hungerFor == 'a') {
-      t = a[index].pos.copy();
+      t = a.get(index).pos.copy();
     }
     return t;
   }

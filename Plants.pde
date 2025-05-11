@@ -7,7 +7,7 @@ class Plants {
   Plants(int _i, int _j, int c, int r) {
     i=_i;
     j=_j;
-    pos = new PVector(i*width/c,j*height/r );
+    pos = new PVector(i*width/c, j*height/r );
   }
 
   void update() {
@@ -15,9 +15,6 @@ class Plants {
     if (!isDead)
       ellipse(pos.x, pos.y, 0, 0);
     fill(255);
-    
-  
-    
   }
 
   void kill() {

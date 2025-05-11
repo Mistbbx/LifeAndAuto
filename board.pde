@@ -23,7 +23,6 @@ class  Board {
       {
         board[i][j] = new Cell();
         board[i][j].setValue((int)random(2));
-        
       }
     }
   }
@@ -53,17 +52,17 @@ class  Board {
     n -= board[_i][_j].getValue();
     return n;
   }
-  
+
   int countColor(int _i, int _j, color _c) {
     int n = 0;
     for (int k = -1; k <=1; k++) {
       for (int l = -1; l<=1; l++) {
-        if(board[_i+k][_j+l].getColor() == _c)
-        n++;
+        if (board[_i+k][_j+l].getColor() == _c)
+          n++;
       }
     }
-    if(board[_i][_j].getColor() == _c)
-    n--;
+    if (board[_i][_j].getColor() == _c)
+      n--;
     return n;
   }
 
@@ -77,22 +76,19 @@ class  Board {
 
     return temp;
   }
-  
-  
-  void emptyBoard(){
-  board = Create2DArray();
+
+
+  void emptyBoard() {
+    board = Create2DArray();
   }
-  
-  void initBoard(int _value, color _c){
-  emptyBoard();
-  for(int i =0;i<col;i++){
-  for(int j =0; j<row;j++){
-  board[i][j].setValue(_value);
-  board[i][j].setColor(_c);
+
+  void initBoard(int _value, color _c) {
+    emptyBoard();
+    for (int i =0; i<col; i++) {
+      for (int j =0; j<row; j++) {
+        board[i][j].setValue(_value);
+        board[i][j].setColor(_c);
+      }
+    }
   }
-  }
-  
-  
-  }
-  
 }

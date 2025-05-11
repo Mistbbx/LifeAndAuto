@@ -15,9 +15,9 @@ class Movement {
   float maxspeed;    // Maximum speed
 
   Movement(float x, float y) {
-    acceleration = new PVector(0,0);
-    velocity = new PVector(0,0);
-    position = new PVector(x,y);
+    acceleration = new PVector(0, 0);
+    velocity = new PVector(0, 0);
+    position = new PVector(x, y);
     r = 6;
     wandertheta = 0;
     maxspeed = 5;
@@ -51,13 +51,13 @@ class Movement {
   // A method that calculates and applies a steering force towards a target
   // STEER = DESIRED MINUS VELOCITY
   void seek(PVector target) {
-    PVector desired = PVector.sub(target,position);  // A vector pointing from the position to the target
+    PVector desired = PVector.sub(target, position);  // A vector pointing from the position to the target
 
     // Normalize desired and scale to maximum speed
     desired.normalize();
     desired.mult(maxspeed);
     // Steering = Desired minus Velocity
-    PVector steer = PVector.sub(desired,velocity);
+    PVector steer = PVector.sub(desired, velocity);
     steer.limit(maxforce);  // Limit to maximum steering force
 
     applyForce(steer);
@@ -69,7 +69,7 @@ class Movement {
     fill(127);
     stroke(0);
     pushMatrix();
-    translate(position.x,position.y);
+    translate(position.x, position.y);
     rotate(theta);
     beginShape(TRIANGLES);
     vertex(0, -r*2);
@@ -94,8 +94,8 @@ void drawWanderStuff(PVector position, PVector circle, PVector target, float rad
   stroke(0);
   noFill();
   ellipseMode(CENTER);
-  ellipse(circle.x,circle.y,rad*2,rad*2);
-  ellipse(target.x,target.y,4,4);
-  line(position.x,position.y,circle.x,circle.y);
-  line(circle.x,circle.y,target.x,target.y);
+  ellipse(circle.x, circle.y, rad*2, rad*2);
+  ellipse(target.x, target.y, 4, 4);
+  line(position.x, position.y, circle.x, circle.y);
+  line(circle.x, circle.y, target.x, target.y);
 }

@@ -1,7 +1,8 @@
 rules r = new rules();
 Board test = new Board(192, 108);
 
-Agent[] a = new Agent[10]; //a = agents
+int agentA = 10;
+ArrayList<Agent> a = new ArrayList<Agent>(); //a = agents
 Agent[] a1 = new Agent[10]; //a = agents
 ArrayList<Plants> p = new ArrayList<Plants>(); //p = plants
 boolean debug = true;
@@ -11,8 +12,8 @@ void setup() {
   //frameRate(10);
   //test.initBoard(1, color(0, 0, 255));
 
-  for (int i = 0; i<a.length; i++ ) {
-    a[i] = new Agent(100+i*20, 100+i*20);
+  for (int i = 0; i<agentA; i++ ) {
+    a.add(new Agent(10, 10));
   }
   for (int i = 0; i<a1.length; i++ ) {
     a1[i] = new Agent(-1000+i*-20, 1000+i*-20);
@@ -20,9 +21,10 @@ void setup() {
   }
   for (int i = 0; i<test.col; i++ ) {
     for (int j = 0; j<test.row; j++ ) {
-      if(test.board[i][j].getValue() == 1){
-        Plants temp = new Plants(i,j,test.col,test.row);
-        p.add(temp);}
+      if (test.board[i][j].getValue() == 1) {
+        Plants temp = new Plants(i, j, test.col, test.row);
+        p.add(temp);
+      }
     }
   }
 }
@@ -38,8 +40,8 @@ void draw() {
   //test = r.MyRules(test);
   test.display();
 
-  for (int i = 0; i<a.length; i++) {
-    a[i].update();
+  for (int i = 0; i<a.size(); i++) {
+    a.get(i).update();
   }
   for (int i = 0; i<a1.length; i++) {
     a1[i].update();
@@ -47,16 +49,15 @@ void draw() {
   p.clear();
   for (int i = 0; i<test.col; i++ ) {
     for (int j = 0; j<test.row; j++ ) {
-      if(test.board[i][j].getValue() == 1){
-      Plants temp = new Plants(i,j,test.col,test.row);
-      p.add(temp);}
+      if (test.board[i][j].getValue() == 1) {
+        Plants temp = new Plants(i, j, test.col, test.row);
+        p.add(temp);
+      }
     }
   }
   for (int i = 0; i<p.size(); i++) {
     p.get(i).update();
   }
-  
-  
 }
 
 
