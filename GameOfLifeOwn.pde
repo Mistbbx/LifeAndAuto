@@ -19,6 +19,9 @@ void setup() {
   for (int i = 0; i<a1.length; i++ ) {
     a1[i] = new Agent(-1900, 1000+i*-500);
     a1[i].hungerFor = 'a';
+    a1[i].m.maxforce = 0.2;
+    a1[i].m.maxspeed = 10;
+    
   }
   for (int i = 0; i<test.col; i++ ) {
     for (int j = 0; j<test.row; j++ ) {

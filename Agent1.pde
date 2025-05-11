@@ -18,13 +18,16 @@ class Agent {
       if (!isHungry)
         m.run();
       else {
-
         m.seek(findTarget());
         m.update();
         m.borders();
-        m.display();
+        if (hungerFor=='p') {
+          displayA();
+        } else {
+          m.display();
+        }
       }
-      if (mitosis >= 50) {
+      if (mitosis >= 30) {
         a.add(new Agent(pos.x, pos.y));
         mitosis = 0;
       }
@@ -34,7 +37,7 @@ class Agent {
     int index = 0;
     float oldD = 2000;
 
-    if (hungerFor == 'p') {
+    if (hungerFor == 'p' && p.size() > 0) {
       for (int i =0; i<p.size(); i++) {
         if (m.position.dist(p.get(i).pos)< 20) {
           p.get(i).kill();
@@ -60,7 +63,7 @@ class Agent {
       isHungry = false;
     }
     PVector t = new PVector(0, 0);
-    if (hungerFor == 'p') {
+    if (hungerFor == 'p' && p.size() > 0) {
       t = p.get(index).pos.copy();
     } else if (hungerFor == 'a' && a.size() > 0) {
       t = a.get(index).pos.copy();
@@ -72,5 +75,10 @@ class Agent {
   void kill() {
     print(a.size()+" ");
     a.remove(number);
+  }
+
+  void displayA() {
+    fill(255, 0, 255);
+    ellipse(pos.x, pos.y, 10, 10);
   }
 }
