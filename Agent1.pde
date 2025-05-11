@@ -15,21 +15,26 @@ class Agent {
   void update() {
     fill(255, 0, 0);
     if (!isDead) {
-      if (!isHungry)
+      if (!isHungry) {
         m.run();
-      else {
+        if (hungerFor=='p') {
+          displayA();
+        } else {
+          display();
+        }
+      } else {
         m.seek(findTarget());
         m.update();
         m.borders();
         if (hungerFor=='p') {
           displayA();
         } else {
-          m.display();
+          display();
         }
       }
       if (mitosis >= 30) {
-        a.add(new Agent(pos.x, pos.y));
         mitosis = 0;
+        a.add(new Agent(pos.x, pos.y));
       }
     }
   }
@@ -61,6 +66,8 @@ class Agent {
       }
     } else {
       isHungry = false;
+      if (hungerFor=='p'){m.maxforce=0.6;}
+      else {m.maxforce=0.25;}
     }
     PVector t = new PVector(0, 0);
     if (hungerFor == 'p' && p.size() > 0) {
@@ -73,12 +80,26 @@ class Agent {
 
 
   void kill() {
-    print(a.size()+" ");
     a.remove(number);
+  }
+  void display() {
+    // Draw a triangle rotated in the direction of velocity
+    float theta = m.velocity.heading() + radians(90);
+    fill(m.color1.x, m.color1.y, m.color1.z);
+    stroke(0);
+    pushMatrix();
+    translate(m.position.x, m.position.y);
+    rotate(theta);
+    beginShape(TRIANGLES);
+    vertex(0, -m.r*2);
+    vertex(-m.r, m.r*2);
+    vertex(m.r, m.r*2);
+    endShape();
+    popMatrix();
   }
 
   void displayA() {
     fill(255, 0, 255);
-    ellipse(pos.x, pos.y, 10, 10);
+    ellipse(m.position.x, m.position.y, 10, 10);
   }
 }

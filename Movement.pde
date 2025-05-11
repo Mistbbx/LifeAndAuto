@@ -28,7 +28,7 @@ class Movement {
   void run() {
     update();
     borders();
-    display();
+    //display();
   }
 
   // Method to update position
@@ -64,21 +64,6 @@ class Movement {
     applyForce(steer);
   }
 
-  void display() {
-    // Draw a triangle rotated in the direction of velocity
-    float theta = velocity.heading() + radians(90);
-    fill(color1.x, color1.y, color1.z);
-    stroke(0);
-    pushMatrix();
-    translate(position.x, position.y);
-    rotate(theta);
-    beginShape(TRIANGLES);
-    vertex(0, -r*2);
-    vertex(-r, r*2);
-    vertex(r, r*2);
-    endShape();
-    popMatrix();
-  }
 
   // Wraparound
   void borders() {

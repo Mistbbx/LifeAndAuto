@@ -8,7 +8,7 @@ class Wander extends Movement {
     wander();
     update();
     borders();
-    display();
+    //display();
   }
 
   void wander() {
