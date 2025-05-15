@@ -12,7 +12,7 @@ class Movement {
   float wandertheta;
   float maxforce;    // Maximum steering force
   float maxspeed;    // Maximum speed
-  PVector color1;
+
 
   Movement(float x, float y) {
     acceleration = new PVector(0, 0);
@@ -22,7 +22,6 @@ class Movement {
     wandertheta = 0;
     maxspeed = 5;
     maxforce = 1;
-    color1 = new PVector(200, 0, 0);
   }
 
   void run() {
